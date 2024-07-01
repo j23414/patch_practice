@@ -72,6 +72,21 @@ git reset --hard HEAD~1
 git apply patches/0001-Add-addition-function.patch
 git apply patches/0003-Add-multiplication-function.patch
 
+# Which generates an error:
+#> error: patch failed: math.js:1
+#> error: math.js: patch does not apply
+```
+
+The error you're encountering is because the patches are trying to apply to a file that has changed since the patches were created. This is similar to a merge conflict, and you can resolve it manually using the `reject` option with `git apply`:
+
+```bash
+git apply --reject patches/0003-Add-multiplication-function.patch
+```
+
+
+
+``` bash
+
 # Check the content of math.js
 cat math.js
 
